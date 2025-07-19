@@ -32,7 +32,7 @@ export const store = configureStore({
   reducer: rootReducer,
   middleWare: (getDefaultMiddleware) => getDefaultMiddleware(
     //passing in config here
-    {serializableCheck: false,}
+    //{serializableCheck: false,}
   ).concat(middleWares),
   //sometimes you dont want a non serializable object error
 });

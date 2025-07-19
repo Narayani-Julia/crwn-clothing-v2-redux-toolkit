@@ -1,4 +1,3 @@
-import { USER_ACTION_TYPES } from './user.types';
 import { createSlice } from '@reduxjs/toolkit';
 const INITIAL_STATE = {
   currentUser: null,
@@ -14,7 +13,8 @@ export const userSlice = createSlice({
     } //define the name of the reducer function that represents the function that represents the action that updates this reducer slice
   }
 });
-
+//non-serializable: plain objects that can be stringified
+//when you initialize your middleware, it actually creates a non-serializable object
 export const {setCurrentUser} = userSlice.actions; //actions is a property of createslice objects
 
 export const userReducer = userSlice.reducer;
