@@ -1,5 +1,4 @@
-import { configureStore } from '@redux/toolkit';
-
+import { configureStore } from '@reduxjs/toolkit';
 
 // import { compose, createStore, applyMiddleware } from 'redux';
 // import { persistStore, persistReducer } from 'redux-persist';
@@ -31,7 +30,11 @@ const middleWares = [process.env.NODE_ENV === 'development' && logger].filter(
 
 export const store = configureStore({
   reducer: rootReducer,
-  middleWare: middleWares,
+  middleWare: (getDefaultMiddleware) => getDefaultMiddleware(
+    //passing in config here
+    {serializableCheck: false,}
+  ).concat(middleWares),
+  //sometimes you dont want a non serializable object error
 });
 
 // export const persistor = persistStore(store);
